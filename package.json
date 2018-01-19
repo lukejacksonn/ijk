@@ -10,7 +10,7 @@
   "keywords": ["vdom", "transform", "hyperapp", "picodom"],
   "author": "Luke Jackson",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "microbundle": "^0.3.1"
   }
 }
