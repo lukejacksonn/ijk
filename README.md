@@ -17,13 +17,15 @@ The above statement will return a virtual DOM tree that can be passed as a node,
 
 All numbers passed as children get converted to strings.
 
-## Install
+## Installation
 
 ```
 npm i xyzd
 ```
 
-## Syntax
+## Usage
+
+Here is a demo on [CodePen](https://codepen.io/lukejacksonn/pen/BJvXvg?editors=0010)
 
 ```js
 import { xyzd } from 'xyzd'
@@ -40,7 +42,6 @@ const vtree = xyzd(
   ]]
 )
 ```
-Here is a demo on [CodePen](https://codepen.io/lukejacksonn/pen/BJvXvg?editors=0010)
 
 ## Comparison
 
