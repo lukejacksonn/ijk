@@ -1,6 +1,6 @@
 {
   "name": "xyzd",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "transforms arrays to virtual dom trees",
   "main": "dist/index.js",
   "module": "index.js",
