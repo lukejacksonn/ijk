@@ -1,14 +1,12 @@
-export const h = node => {
-  const [name, props, children] = node || []
-  return !node
+export const h = schema => node =>
+  !node
     ? false
-    : typeof props === 'object' && !Array.isArray(props)
+    : typeof node[1] === 'object' && !Array.isArray(node[1])
       ? {
-          name,
-          props,
-          children: Array.isArray(children)
-            ? children.map(h).filter(Boolean)
-            : children + '',
+          [schema[0]]: node[0],
+          [schema[1]]: node[1],
+          [schema[2]]: Array.isArray(node[2])
+            ? node[2].map(h(schema)).filter(Boolean)
+            : node[2] + '',
         }
-      : h([name, {}, props])
-}
+      : h(schema)([node[0], {}, node[1]])
