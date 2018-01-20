@@ -15,7 +15,7 @@ The above statement will return a virtual DOM tree that can be passed as a node,
 - The second argument `props` is an `object` (optional) containing element attributes
 - The third argument `children` is an `string|array` (optional) of child node(s)
 
-All numbers passed as children get converted to strings.
+All numbers passed as children get converted to strings. All falsey children are discarded.
 
 ## Installation
 
@@ -28,8 +28,8 @@ npm i xyzd
 Here is a demo on [CodePen](https://codepen.io/lukejacksonn/pen/BJvXvg?editors=0010)
 
 ```js
-import { xyzd } from 'xyzd'
-const vtree = xyzd(
+import { h } from 'xyzd'
+const vtree = h(
   ['main', [
     ['h1', 'Hello World']
     ['input', { type: 'range' }]
@@ -38,7 +38,8 @@ const vtree = xyzd(
       ['li', 1]
       ['li', 2]
       ['li', 3]
-    ]]
+    ]],
+    false && ['span', 'Hidden']
   ]]
 )
 ```

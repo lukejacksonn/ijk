@@ -1,8 +1,14 @@
-export const xyzd = ([name, props, children]) =>
-  typeof props === 'object' && !Array.isArray(props)
-    ? {
-        name,
-        props,
-        children: Array.isArray(children) ? children.map(xyzd) : children + '',
-      }
-    : xyzd([name, {}, props])
+export const h = node => {
+  const [name, props, children] = node || []
+  return !node
+    ? false
+    : typeof props === 'object' && !Array.isArray(props)
+      ? {
+          name,
+          props,
+          children: Array.isArray(children)
+            ? children.map(h).filter(Boolean)
+            : children + '',
+        }
+      : h([name, {}, props])
+}
