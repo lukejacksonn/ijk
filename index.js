@@ -1,12 +1,16 @@
-export const h = schema => node =>
-  !node
-    ? false
-    : typeof node[1] === 'object' && !Array.isArray(node[1])
-      ? {
-          [schema[0]]: node[0],
-          [schema[1]]: node[1],
-          [schema[2]]: Array.isArray(node[2])
-            ? node[2].map(h(schema)).filter(Boolean)
-            : node[2] + '',
-        }
-      : h(schema)([node[0], {}, node[1]])
+const h = schema => node => {
+  const go = x =>
+    !x
+      ? false
+      : typeof x[1] === 'object' && !Array.isArray(x[1])
+        ? {
+            [schema[0]]: x[0],
+            [schema[1]]: x[1],
+            [schema[2]]: Array.isArray(x[2])
+              ? x[2].map(go).filter(Boolean)
+              : x[2] + '',
+          }
+        : go([x[0], {}, x[1]])
+
+  return go(node)
+}

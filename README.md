@@ -6,7 +6,7 @@ Is h too repetitive? Not a fan of JSX? Love LISP? Code as data and data as code?
 This is a tiny recursive transform function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a nested array structure.
 
 ```js
-xyzd(schema)(['button', { onclick: console.log }, 'Log Event'])
+h(schema)(['button', { onclick: console.log }, 'Log Event'])
 ```
 
 The above statement will return a virtual DOM tree that can be passed as a node, to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
