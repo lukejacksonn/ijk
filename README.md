@@ -6,19 +6,13 @@ Is h too repetitive? Not a fan of JSX? Love LISP? Code as data and data as code?
 This is a tiny recursive transform function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a nested array structure.
 
 ```js
-h(schema)(['button', { onclick: console.log }, 'Log Event'])
+h([name, props, children]) // hyperapp and picodom trees
+p([nodeName, attributes, children]) // preact trees
 ```
 
-The above statement will return a virtual DOM tree that can be passed as a node, to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
+The above statements both return a virtual DOM tree that can be passed as a node, to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
 
-## Schema
-
-You will need to specify the schema of the desired output depending on the consumer:
-
-- *Hyperapp:* `['name', 'props', 'children']`
-- *Preact:* `['nodeName', 'attributes', 'children']`
-
-This will return a function that accepts an array (your DOM representation)
+The function accepts an array argument (your DOM representation):
 
 - The first argument should be a `string` (required) used as a HTML tag name
 - The second argument should be an `object` (optional) containing element attributes

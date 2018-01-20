@@ -1,2 +1,2 @@
-var r,t=function(a){return function(e){return!!e&&("object"!=typeof e[1]||Array.isArray(e[1])?t(a)([e[0],{},e[1]]):((r={})[a[0]]=e[0],r[a[1]]=e[1],r[a[2]]=Array.isArray(e[2])?e[2].map(t(a)).filter(Boolean):e[2]+"",r))}};export{t as h};
+var r=function(a){return!!a&&("object"!=typeof a[1]||Array.isArray(a[1])?r([a[0],{},a[1]]):{name:a[0],props:a[1],children:Array.isArray(a[2])?a[2].map(r).filter(Boolean):a[2]+""})};export{r as h};
 //# sourceMappingURL=index.js.map
