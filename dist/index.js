@@ -1,2 +1,2 @@
-var r=function(a){var e=a[0],n=a[1],o=a[2];return"object"!=typeof n||Array.isArray(n)?r([e,{},n]):{name:e,props:n,children:Array.isArray(o)?o.map(r):o+""}};export{r as xyzd};
+var r=function(a){var e=a||[],o=e[0],n=e[1],t=e[2];return!!a&&("object"!=typeof n||Array.isArray(n)?r([o,{},n]):{name:o,props:n,children:Array.isArray(t)?t.map(r).filter(Boolean):t+""})};export{r as h};
 //# sourceMappingURL=index.js.map
