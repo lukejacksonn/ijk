@@ -11,7 +11,7 @@ export const h = node =>
         }
       : h([node[0], {}, node[1]])
 
-const p = node =>
+export const p = node =>
   !node
     ? false
     : typeof node[1] === 'object' && !Array.isArray(node[1])
