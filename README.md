@@ -32,7 +32,7 @@ Here is a demo with [Hyperapp](https://codepen.io/lukejacksonn/pen/BJvXvg?editor
 
 ```js
 import { h } from 'xyzd'
-const vtree = h(schema)(
+const vtree = h(
   ['main', [
     ['h1', 'Hello World']
     ['input', { type: 'range' }]
