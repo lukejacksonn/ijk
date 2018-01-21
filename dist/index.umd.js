@@ -1,2 +1,31 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports):"function"==typeof define&&define.amd?define(["exports"],r):r(e.xyzd={})}(this,function(e){var r=function(e,r){return r?"string"==typeof r[0]?e.concat([r]):e.concat(r):e},t=function(e){return!!e&&("object"!=typeof e[1]||Array.isArray(e[1])?t([e[0],{},e[1]||""]):{name:e[0],props:e[1],children:Array.isArray(e[2])?e[2].reduce(r,[]).map(t):e[2]+""})},n=function(e){return!!e&&("object"!=typeof e[1]||Array.isArray(e[1])?n([e[0],{},e[1]||""]):{nodeName:e[0],attributes:e[1],children:Array.isArray(e[2])?e[2].reduce(r,[]).map(n):e[2]+""})};e.h=t,e.p=n});
+;(function(global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? factory(exports)
+    : typeof define === 'function' && define.amd
+      ? define(['exports'], factory)
+      : factory((global.xyzd = {}))
+})(this, function(exports) {
+  var obj
+  var clense = function(a, b) {
+    return !b ? a : typeof b[0] === 'string' ? a.concat([b]) : a.concat(b)
+  }
+  var factory = function(schema) {
+    return function(node) {
+      return !!node && typeof node[1] === 'object' && !Array.isArray(node[1])
+        ? ((obj = {}),
+          (obj[schema[0]] = node[0]),
+          (obj[schema[1]] = node[1]),
+          (obj[schema[2]] = Array.isArray(node[2])
+            ? node[2].reduce(clense, []).map(factory(schema))
+            : node[2] + ''),
+          obj)
+        : factory(schema)([node[0], {}, node[1] || ''])
+    }
+  }
+  var h = factory(['name', 'props', 'children'])
+  var p = factory(['nodeName', 'attributes', 'children'])
+
+  exports.h = h
+  exports.p = p
+})
 //# sourceMappingURL=index.umd.js.map

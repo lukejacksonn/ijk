@@ -5,14 +5,9 @@
   "main": "dist/index.js",
   "module": "index.js",
   "scripts": {
-    "build": "microbundle"
+    "build": "microbundle --compress false"
   },
-  "keywords": [
-    "vdom",
-    "transform",
-    "hyperapp",
-    "picodom"
-  ],
+  "keywords": ["vdom", "transform", "hyperapp", "picodom"],
   "author": "Luke Jackson",
   "license": "ISC",
   "devDependencies": {
