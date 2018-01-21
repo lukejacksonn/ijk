@@ -1,10 +1,16 @@
 {
   "name": "xyzd",
-  "version": "0.13.4",
+  "version": "0.14.0",
   "description": "transform arrays to virtual dom trees",
   "main": "index.js",
   "module": "index.js",
-  "keywords": ["vdom", "transform", "hyperapp", "picodom", "preact"],
+  "keywords": [
+    "vdom",
+    "transform",
+    "hyperapp",
+    "picodom",
+    "preact"
+  ],
   "author": "Luke Jackson",
   "license": "MIT"
 }
