@@ -95,3 +95,42 @@ const jsx =
     {false && <span>'Hidden'</span>}
   </main>
 ```
+
+## Advanced Usage
+
+Here is an example that takes advantage of most features and demonstrates components.
+
+```js
+import { h } from 'ijk'
+
+const Item = data => ['li', data]
+const Article = ({ title, story, related }) => [
+  'article',
+  [
+    ['h2', title],
+    ['hr'],
+    ['p', story],
+    related.map(Item),
+  ]
+]
+
+const Main =
+  ['main', [
+    ['h1', 'Hello World'],
+    ['input', { type: 'range' }],
+    ['ul', [
+      ['li', 1],
+      ['li', 2],
+      ['li', 3],
+    ]],
+    ['button', { onclick: console.log }, 'Log Event'],
+    false && ['span', 'Hidden'],
+    Article({
+      title: 'Some News',
+      story: 'lorem ipsum dolor sit amet',
+      related: [4,5],
+    })
+  ]]
+
+const tree = h('name', 'props', 'children')(Main)
+```
