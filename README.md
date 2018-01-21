@@ -20,7 +20,7 @@ The function accepts an array argument (your DOM representation):
 - Index `1` should contain an `object` (optional) containing element attributes
 - Index `2` should contain an `string|array` (optional) of text content or child nodes
 
-All numbers passed as children get converted to strings. All falsey children are discarded.
+Children are flattened and falsey children are excluded. Numbers passed as children get converted to strings.
 
 ## Installation
 
