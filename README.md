@@ -3,7 +3,7 @@
 
 Find h a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
 
-This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent your user interfaces.
+This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent user interfaces.
 
 ```js
 const tree = h('x', 'y', 'z')
@@ -45,6 +45,7 @@ Here is a demo with [Hyperapp](https://codepen.io/lukejacksonn/pen/BJvXvg?editor
 
 ```js
 import { h } from 'ijk'
+
 const tree = h('name', 'props', 'children')(
   ['main', [
     ['h1', 'Hello World']
@@ -96,7 +97,7 @@ const jsx =
   </main>
 ```
 
-## Advanced Usage
+## Advanced
 
 Here is an example that takes advantage of most features and demonstrates components.
 
