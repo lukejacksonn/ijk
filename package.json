@@ -1,21 +1,10 @@
 {
   "name": "xyzd",
   "version": "0.13.4",
-  "description": "transforms arrays to virtual dom trees",
-  "main": "dist/index.js",
+  "description": "transform arrays to virtual dom trees",
+  "main": "index.js",
   "module": "index.js",
-  "scripts": {
-    "build": "microbundle --compress false"
-  },
-  "keywords": [
-    "vdom",
-    "transform",
-    "hyperapp",
-    "picodom"
-  ],
+  "keywords": ["vdom", "transform", "hyperapp", "picodom", "preact"],
   "author": "Luke Jackson",
-  "license": "ISC",
-  "devDependencies": {
-    "microbundle": "^0.3.1"
-  }
+  "license": "MIT"
 }
