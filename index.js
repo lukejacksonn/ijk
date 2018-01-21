@@ -7,10 +7,10 @@ const factory = (x, y, z) => node =>
         [x]: node[0],
         [y]: node[1],
         [z]: Array.isArray(node[2])
-          ? node[2].reduce(clense, []).map(factory(schema))
+          ? node[2].reduce(clense, []).map(factory(x, y, z))
           : node[2] + '',
       }
-    : factory(schema)([node[0], {}, node[1] || ''])
+    : factory(x, y, z)([node[0], {}, node[1] || ''])
 
 export const h = factory('name', 'props', 'children')
 export const p = factory('nodeName', 'attributes', 'children')
