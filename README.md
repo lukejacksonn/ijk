@@ -1,24 +1,35 @@
 # xyzd
-> transforms arrays to virtual dom trees
+> Transforms arrays into virtual dom trees
 
 Is h too repetitive? Not a fan of JSX? Love LISP? Code as data and data as code?
 
 This is a tiny recursive transform function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead, a nested array structure.
 
 ```js
-h([name, props, children]) // hyperapp and picodom trees
-p([nodeName, attributes, children]) // preact trees
+const tree = h('x', 'y', 'z')
+(
+  ['main', [
+    ['h1', 'Hello World']
+    ['input', { type: 'range' }],
+    ['input', { onclick: console.log }, 'Log Event']
+  ]]
+)
 ```
 
-The above statements both return a virtual DOM tree that can be passed as a node to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
+The above call to `h` returns a virtual DOM tree with named attributes that respect the provided schema. Expected output here, would be of the shape `{ x: 'main', y: {}, z: [...] }`. A tree like this can be passed as a node to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
+
+### Schemas
+
+- **Hyperapp/Picodom:** `h('name','props','children')`
+- **Preact:** `h('nodeName','attributes','children')`
 
 ## Signature
 
-The function accepts an array argument (your DOM representation):
+A call to `h(x,y,z)` returns a build function that expects a node of type `[0,1,2]` where:
 
-- Index `0` should contain a `string` (required) used as a HTML tag name
-- Index `1` should contain an `object` (optional) containing element attributes
-- Index `2` should contain an `string|array` (optional) of text content or child nodes
+- Index `0` contains a `string` used as the elements tag name (required)
+- Index `1` contains an `object` containing element attributes (optional)
+- Index `2` contains an `string|array` of content or children (optional)
 
 Children are flattened and falsey children are excluded. Numbers passed as children get converted to strings.
 
@@ -34,7 +45,7 @@ Here is a demo with [Hyperapp](https://codepen.io/lukejacksonn/pen/BJvXvg?editor
 
 ```js
 import { h } from 'xyzd'
-const vtree = h(
+const tree = h('name', 'props', 'children')(
   ['main', [
     ['h1', 'Hello World']
     ['input', { type: 'range' }]
