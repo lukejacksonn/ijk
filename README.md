@@ -9,9 +9,9 @@ This is a tiny recursive factory function that allows you to write terse, declar
 const tree = h('x', 'y', 'z')
 (
   ['main', [
-    ['h1', 'Hello World']
+    ['h1', 'Hello World'],
     ['input', { type: 'range' }],
-    ['input', { onclick: console.log }, 'Log Event']
+    ['input', { onclick: console.log }, 'Log Event'],
   ]]
 )
 ```
