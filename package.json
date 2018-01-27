@@ -10,7 +10,7 @@
   "keywords": ["vdom", "html", "hyperscript", "hyperapp", "picodom", "preact"],
   "author": "Luke Jackson",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "tead": "^0.4.3"
   }
 }
