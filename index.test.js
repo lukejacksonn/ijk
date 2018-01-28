@@ -3,25 +3,43 @@ import { h } from './index'
 const hh = h('x', 'y', 'z')
 const noop = x => x
 
+const Item = data => ['li', data]
+const Component = ({ title, story, related }) => [
+  'section',
+  [['h2', title], ['hr'], ['p', story], related.map(Item)],
+]
+
+const Main = [
+  'main',
+  [
+    ['h1', 'Hello World'],
+    ['input', { type: 'range' }],
+    ['ul', [1, 2, 3].map(Item)],
+    ['button', { onclick: noop }, 'Log Event'],
+    false && ['span', 'Hidden'],
+    Component({
+      title: 'Some News',
+      story: 'lorem ipsum dolor sit amet',
+      related: [4, 5],
+    }),
+  ],
+]
+
+const Button = ['button', { onclick: noop }, 'testing']
+const Input = ['input', { type: 'range' }]
+const Title = ['h1', 'testing']
+const Hr = ['hr']
+
 export default {
   Element: {
-    base: [
-      hh(['button', { onclick: noop }, 'testing']),
-      { x: 'button', y: { onclick: noop }, z: 'testing' },
-    ],
-    'no children': [
-      hh(['input', { type: 'range' }]),
-      { x: 'input', y: { type: 'range' }, z: [] },
-    ],
-    'no props': [
-      hh(['button', 'testing']),
-      { x: 'button', y: {}, z: 'testing' },
-    ],
-    'no props, no children': [hh(['hr']), { x: 'hr', y: {}, z: [] }],
+    base: [hh(Button), { x: 'button', y: { onclick: noop }, z: 'testing' }],
+    'no children': [hh(Input), { x: 'input', y: { type: 'range' }, z: [] }],
+    'no props': [hh(Title), { x: 'h1', y: {}, z: 'testing' }],
+    'no props, no children': [hh(Hr), { x: 'hr', y: {}, z: [] }],
   },
   Nested: {
     base: [
-      hh(['main', [['button', { onclick: noop }, 'testing']]]),
+      hh(['main', [Button]]),
       {
         x: 'main',
         y: {},
@@ -29,16 +47,50 @@ export default {
       },
     ],
     'no children': [
-      hh(['main', [['input', { type: 'range' }]]]),
+      hh(['main', [Input]]),
       { x: 'main', y: {}, z: [{ x: 'input', y: { type: 'range' }, z: [] }] },
     ],
     'no props': [
-      hh(['main', [['button', 'testing']]]),
-      { x: 'main', y: {}, z: [{ x: 'button', y: {}, z: 'testing' }] },
+      hh(['main', [Title]]),
+      { x: 'main', y: {}, z: [{ x: 'h1', y: {}, z: 'testing' }] },
     ],
     'no props, no children': [
-      hh(['main', [['hr']]]),
+      hh(['main', [Hr]]),
       { x: 'main', y: {}, z: [{ x: 'hr', y: {}, z: [] }] },
+    ],
+  },
+  Component: {
+    base: [
+      hh(Main),
+      {
+        x: 'main',
+        y: {},
+        z: [
+          { x: 'h1', y: {}, z: 'Hello World' },
+          { x: 'input', y: { type: 'range' }, z: [] },
+          {
+            x: 'ul',
+            y: {},
+            z: [
+              { x: 'li', y: {}, z: '1' },
+              { x: 'li', y: {}, z: '2' },
+              { x: 'li', y: {}, z: '3' },
+            ],
+          },
+          { x: 'button', y: { onclick: noop }, z: 'Log Event' },
+          {
+            x: 'section',
+            y: {},
+            z: [
+              { x: 'h2', y: {}, z: 'Some News' },
+              { x: 'hr', y: {}, z: [] },
+              { x: 'p', y: {}, z: 'lorem ipsum dolor sit amet' },
+              { x: 'li', y: {}, z: '4' },
+              { x: 'li', y: {}, z: '5' },
+            ],
+          },
+        ],
+      },
     ],
   },
 }
