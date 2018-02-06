@@ -6,11 +6,12 @@ const build = (x, y, z) => node =>
     ? {
         [x]: node[0],
         [y]: node[1],
-        [z]: node[2]
-          ? Array.isArray(node[2])
-            ? node[2].reduce(clean, []).map(build(x, y, z))
-            : node[2] + ''
-          : [],
+        [z]:
+          node[2] || node[2] === 0
+            ? Array.isArray(node[2])
+              ? node[2].reduce(clean, []).map(build(x, y, z))
+              : node[2] + ''
+            : [],
       }
     : build(x, y, z)([node[0], {}, node[1]])
 

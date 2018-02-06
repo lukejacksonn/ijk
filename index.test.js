@@ -12,6 +12,7 @@ const Component = ({ title, story, related }) => [
 const Main = [
   'main',
   [
+    ['p', 0],
     ['h1', 'Hello World'],
     ['input', { type: 'range' }],
     ['ul', [1, 2, 3].map(Item)],
@@ -28,6 +29,7 @@ const Main = [
 const Button = ['button', { onclick: noop }, 'testing']
 const Input = ['input', { type: 'range' }]
 const Title = ['h1', 'testing']
+const Zero = ['p', 0]
 const Hr = ['hr']
 
 export default {
@@ -36,6 +38,7 @@ export default {
     'no children': [hh(Input), { x: 'input', y: { type: 'range' }, z: [] }],
     'no props': [hh(Title), { x: 'h1', y: {}, z: 'testing' }],
     'no props, no children': [hh(Hr), { x: 'hr', y: {}, z: [] }],
+    'children 0': [hh(Zero), { x: 'p', y: {}, z: '0' }],
   },
   Nested: {
     base: [
@@ -66,6 +69,7 @@ export default {
         x: 'main',
         y: {},
         z: [
+          { x: 'p', y: {}, z: '0' },
           { x: 'h1', y: {}, z: 'Hello World' },
           { x: 'input', y: { type: 'range' }, z: [] },
           {
