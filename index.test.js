@@ -12,6 +12,7 @@ const Component = ({ title, story, related }) => [
 const Main = [
   'main',
   [
+    'Hello',
     ['p', 0],
     ['h1', 'Hello World'],
     ['input', { type: 'range' }],
@@ -39,6 +40,7 @@ export default {
     'no props': [hh(Title), { x: 'h1', y: {}, z: 'testing' }],
     'no props, no children': [hh(Hr), { x: 'hr', y: {}, z: [] }],
     'children 0': [hh(Zero), { x: 'p', y: {}, z: '0' }],
+    'just string': [hh('Hello'), 'Hello'],
   },
   Nested: {
     base: [
@@ -47,6 +49,14 @@ export default {
         x: 'main',
         y: {},
         z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }],
+      },
+    ],
+    'base with string': [
+      hh(['main', [Button, 'Hello']]),
+      {
+        x: 'main',
+        y: {},
+        z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }, 'Hello'],
       },
     ],
     'no children': [
@@ -69,6 +79,7 @@ export default {
         x: 'main',
         y: {},
         z: [
+          'Hello',
           { x: 'p', y: {}, z: '0' },
           { x: 'h1', y: {}, z: 'Hello World' },
           { x: 'input', y: { type: 'range' }, z: [] },
