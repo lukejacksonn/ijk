@@ -1,6 +1,5 @@
 import { h } from './index'
 
-const hh = h('x', 'y', 'z')
 const noop = x => x
 
 const Item = data => ['li', data]
@@ -28,80 +27,117 @@ const Main = [
 ]
 
 const Button = ['button', { onclick: noop }, 'testing']
+const ButtonNode = {
+  nodeName: 'button',
+  attributes: { onclick: noop },
+  children: 'testing',
+}
+
 const Input = ['input', { type: 'range' }]
+const InputNode = {
+  nodeName: 'input',
+  attributes: { type: 'range' },
+  children: [],
+}
+
 const Title = ['h1', 'testing']
+const TitleNode = { nodeName: 'h1', attributes: {}, children: 'testing' }
+
 const Zero = ['p', 0]
+const ZeroNode = { nodeName: 'p', attributes: {}, children: '0' }
+
 const Hr = ['hr']
+const HrNode = { nodeName: 'hr', attributes: {}, children: [] }
 
 export default {
   Element: {
-    base: [hh(Button), { x: 'button', y: { onclick: noop }, z: 'testing' }],
-    'no children': [hh(Input), { x: 'input', y: { type: 'range' }, z: [] }],
-    'no props': [hh(Title), { x: 'h1', y: {}, z: 'testing' }],
-    'no props, no children': [hh(Hr), { x: 'hr', y: {}, z: [] }],
-    'children 0': [hh(Zero), { x: 'p', y: {}, z: '0' }],
-    'just string': [hh('Hello'), 'Hello'],
+    base: [h(Button), ButtonNode],
+    'no children': [h(Input), InputNode],
+    'no props': [h(Title), TitleNode],
+    'no props, no children': [h(Hr), HrNode],
+    'children 0': [h(Zero), ZeroNode],
+    'just string': [h('Hello'), 'Hello'],
   },
   Nested: {
     base: [
-      hh(['main', [Button]]),
+      h(['main', [Button]]),
       {
-        x: 'main',
-        y: {},
-        z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }],
+        nodeName: 'main',
+        attributes: {},
+        children: [ButtonNode],
       },
     ],
     'base with string': [
-      hh(['main', [Button, 'Hello']]),
+      h(['main', [Button, 'Hello']]),
       {
-        x: 'main',
-        y: {},
-        z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }, 'Hello'],
+        nodeName: 'main',
+        attributes: {},
+        children: [ButtonNode, 'Hello'],
       },
     ],
     'no children': [
-      hh(['main', [Input]]),
-      { x: 'main', y: {}, z: [{ x: 'input', y: { type: 'range' }, z: [] }] },
+      h(['main', [Input]]),
+      {
+        nodeName: 'main',
+        attributes: {},
+        children: [InputNode],
+      },
     ],
     'no props': [
-      hh(['main', [Title]]),
-      { x: 'main', y: {}, z: [{ x: 'h1', y: {}, z: 'testing' }] },
+      h(['main', [Title]]),
+      {
+        nodeName: 'main',
+        attributes: {},
+        children: [TitleNode],
+      },
     ],
     'no props, no children': [
-      hh(['main', [Hr]]),
-      { x: 'main', y: {}, z: [{ x: 'hr', y: {}, z: [] }] },
+      h(['main', [Hr]]),
+      {
+        nodeName: 'main',
+        attributes: {},
+        children: [HrNode],
+      },
     ],
   },
   Component: {
     base: [
-      hh(Main),
+      h(Main),
       {
-        x: 'main',
-        y: {},
-        z: [
+        nodeName: 'main',
+        attributes: {},
+        children: [
           'Hello',
-          { x: 'p', y: {}, z: '0' },
-          { x: 'h1', y: {}, z: 'Hello World' },
-          { x: 'input', y: { type: 'range' }, z: [] },
+          { nodeName: 'p', attributes: {}, children: '0' },
+          { nodeName: 'h1', attributes: {}, children: 'Hello World' },
+          { nodeName: 'input', attributes: { type: 'range' }, children: [] },
           {
-            x: 'ul',
-            y: {},
-            z: [
-              { x: 'li', y: {}, z: '1' },
-              { x: 'li', y: {}, z: '2' },
-              { x: 'li', y: {}, z: '3' },
+            nodeName: 'ul',
+            attributes: {},
+            children: [
+              { nodeName: 'li', attributes: {}, children: '1' },
+              { nodeName: 'li', attributes: {}, children: '2' },
+              { nodeName: 'li', attributes: {}, children: '3' },
             ],
           },
-          { x: 'button', y: { onclick: noop }, z: 'Log Event' },
           {
-            x: 'section',
-            y: {},
-            z: [
-              { x: 'h2', y: {}, z: 'Some News' },
-              { x: 'hr', y: {}, z: [] },
-              { x: 'p', y: {}, z: 'lorem ipsum dolor sit amet' },
-              { x: 'li', y: {}, z: '4' },
-              { x: 'li', y: {}, z: '5' },
+            nodeName: 'button',
+            attributes: { onclick: noop },
+            children: 'Log Event',
+          },
+          {
+            nodeName: 'section',
+            attributes: {},
+            children: [
+              { nodeName: 'h2', attributes: {}, children: 'Some News' },
+              { nodeName: 'hr', attributes: {}, children: [] },
+              {
+                nodeName: 'p',
+                attributes: {},
+                children: 'lorem ipsum dolor sit amet',
+              },
+              { nodeName: 'li', attributes: {}, children: '4' },
+              { nodeName: 'li', attributes: {}, children: '5' },
             ],
           },
         ],
