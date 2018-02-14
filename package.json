@@ -1,12 +1,12 @@
 {
   "name": "ijk",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "Transforms arrays into virtual dom trees",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
     "test": "tead --coverage",
-    "release": "npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+    "release": "npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push origin master --tags && npm publish"
   },
   "keywords": [
     "vdom",
