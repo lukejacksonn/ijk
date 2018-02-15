@@ -6,30 +6,30 @@ Find h a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data
 This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent user interfaces.
 
 ```js
-const tree = h('x', 'y', 'z')
-(
+const tree = h(
   ['main', [
     ['h1', 'Hello World'],
     ['input', { type: 'range' }],
-    ['input', { onclick: console.log }, 'Log Event'],
+    ['button', { onclick: console.log }, 'Log Event'],
   ]]
 )
 ```
 
-The above call to `h` returns a virtual DOM tree with named attributes that respect the provided schema. Expected output here, would be of the shape `{ x: 'main', y: {}, z: [...] }`. A tree like this can be passed as a node to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
+The above call to `h` returns a virtual DOM tree with named attributes that respect the default schema. Expected output here, would be of the shape:
 
-### Schemas
+```js
+{ nodeName: 'main', attributes: {}, children: [...] }
+```
 
-- **Hyperapp/Picodom:** `h('name','props','children')`
-- **Preact:** `h('nodeName','attributes','children')`
+Trees of this shape can be passed in to diff, patch and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
 
 ## Signature
 
-A call to `h(x,y,z)` returns a build function that expects a node of type `[0,1,2]` where:
+The `h` function expects a single node of type `[0,1,2]` as an argument, where:
 
 - Index `0` contains a `string` used as the elements tag name (required)
-- Index `1` contains an `object` containing element attributes (optional)
-- Index `2` contains an `string|array` of content or children (optional)
+- Index `1` contains an `object` containing the elements attributes (optional)
+- Index `2` contains a `string` (text content) or an `array` of child nodes (optional)
 
 Children are flattened and falsey children are excluded. Numbers passed as children get converted to strings.
 
@@ -46,7 +46,7 @@ Here is a demo with [Hyperapp](https://codepen.io/lukejacksonn/pen/BJvXvg?editor
 ```js
 import { h } from 'ijk'
 
-const tree = h('name', 'props', 'children')(
+const tree = h(
   ['main', [
     ['h1', 'Hello World']
     ['input', { type: 'range' }]
@@ -133,5 +133,5 @@ const Main =
     })
   ]]
 
-const tree = h('name', 'props', 'children')(Main)
+const tree = h(Main)
 ```
