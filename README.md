@@ -1,7 +1,7 @@
 # ijk
-> Transforms arrays into virtual dom trees
+> Transforms arrays into virtual DOM trees
 
-Find h a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
+Find `h` a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
 
 This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent user interfaces.
 
@@ -16,12 +16,11 @@ const tree = h('x', 'y', 'z')
 )
 ```
 
-The above call to `h` returns a virtual DOM tree with named attributes that respect the provided schema. Expected output here, would be of the shape `{ x: 'main', y: {}, z: [...] }`. A tree like this can be passed as a node to patch, diff and render algorithms exposed by libraries like [hyperapp](https://github.com/hyperapp/hyperapp), [picodom](https://github.com/picodom/picodom) or [preact](https://github.com/developit/preact).
+The above call to `h` returns a virtual DOM tree with named attributes that respect the provided schema. Expected output here, would be of the shape `{ x: 'main', y: {}, z: [...] }`. A tree like this can be passed as a node to patch, diff and render algorithms exposed by libraries like [Hyperapp](https://github.com/hyperapp/hyperapp), [Ultradom](https://github.com/jorgebucaran/ultradom) or [Preact](https://github.com/developit/preact).
 
 ### Schemas
 
-- **Hyperapp/Picodom:** `h('name','props','children')`
-- **Preact:** `h('nodeName','attributes','children')`
+- **Hyperapp** / **Ultradom** / **Preact:** `h('nodeName','attributes','children')`
 
 ## Signature
 
@@ -46,14 +45,14 @@ Here is a demo with [Hyperapp](https://codepen.io/lukejacksonn/pen/BJvXvg?editor
 ```js
 import { h } from 'ijk'
 
-const tree = h('name', 'props', 'children')(
+const tree = h('nodeName', 'attributes', 'children')(
   ['main', [
-    ['h1', 'Hello World']
-    ['input', { type: 'range' }]
-    ['button', { onclick: console.log }, 'Log Event']
+    ['h1', 'Hello World'],
+    ['input', { type: 'range' }],
+    ['button', { onclick: console.log }, 'Log Event'],
     ['ul', [
-      ['li', 1]
-      ['li', 2]
+      ['li', 1],
+      ['li', 2],
       ['li', 3]
     ]],
     false && ['span', 'Hidden']
@@ -133,5 +132,5 @@ const Main =
     })
   ]]
 
-const tree = h('name', 'props', 'children')(Main)
+const tree = h('nodeName', 'attributes', 'children')(Main)
 ```
