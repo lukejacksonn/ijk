@@ -1,7 +1,7 @@
 # ijk
-> Transforms arrays into virtual dom trees
+> Transforms arrays into virtual DOM trees
 
-Find h a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
+Find `h` a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
 
 This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent user interfaces.
 
