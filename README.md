@@ -47,12 +47,12 @@ import { h } from 'ijk'
 
 const tree = h('nodeName', 'attributes', 'children')(
   ['main', [
-    ['h1', 'Hello World']
-    ['input', { type: 'range' }]
-    ['button', { onclick: console.log }, 'Log Event']
+    ['h1', 'Hello World'],
+    ['input', { type: 'range' }],
+    ['button', { onclick: console.log }, 'Log Event'],
     ['ul', [
-      ['li', 1]
-      ['li', 2]
+      ['li', 1],
+      ['li', 2],
       ['li', 3]
     ]],
     false && ['span', 'Hidden']
