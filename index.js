@@ -2,19 +2,23 @@ const isString = x => typeof x === 'string'
 const isArray = x => Array.isArray(x)
 const isObject = x => typeof x === 'object' && !isArray(x)
 
-const clean = (a, b) => (!b ? a : isString(b[0]) ? a.concat([b]) : a.concat(b))
-const child = x => f =>
-  x || x === 0 ? (isArray(x) ? x.reduce(clean, []).map(f) : x + '') : []
+const clean = (arr, n) =>
+  (n && Array.prototype.push.apply(arr, (isString(n[0]) ? [n] : n)), arr)
 
-const build = (x, y, z) => node =>
-  !!node && isString(node)
+const child = (n, cb) =>
+  n != null
+    ? (isArray(n)
+      ? n.reduce(clean, []).map(cb)
+      : n + '')
+    : []
+
+export const h = (x, y, z) => node =>
+  isString(node)
     ? node
     : isObject(node[1])
       ? {
           [x]: node[0],
           [y]: node[1],
-          [z]: child(node[2])(build(x, y, z)),
+          [z]: child(node[2], h(x, y, z)),
         }
-      : build(x, y, z)([node[0], {}, node[1]])
-
-export const h = build
+      : h(x, y, z)([node[0], {}, node[1]])

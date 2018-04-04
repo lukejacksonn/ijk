@@ -1,12 +1,12 @@
-import { h } from './index'
+import { h } from '.'
 
 const hh = h('x', 'y', 'z')
 const noop = x => x
 
-const Item = data => ['li', data]
+const ListItem = data => ['li', data]
 const Component = ({ title, story, related }) => [
   'section',
-  [['h2', title], ['hr'], ['p', story], related.map(Item)],
+  [['h2', title], ['hr'], ['p', story], related.map(ListItem)],
 ]
 
 const Main = [
@@ -16,7 +16,7 @@ const Main = [
     ['p', 0],
     ['h1', 'Hello World'],
     ['input', { type: 'range' }],
-    ['ul', [1, 2, 3].map(Item)],
+    ['ul', [1, 2, 3].map(ListItem)],
     ['button', { onclick: noop }, 'Log Event'],
     false && ['span', 'Hidden'],
     Component({
@@ -35,13 +35,52 @@ const Hr = ['hr']
 
 export default {
   Element: {
-    base: [hh(Button), { x: 'button', y: { onclick: noop }, z: 'testing' }],
-    'no children': [hh(Input), { x: 'input', y: { type: 'range' }, z: [] }],
-    'no props': [hh(Title), { x: 'h1', y: {}, z: 'testing' }],
-    'no props, no children': [hh(Hr), { x: 'hr', y: {}, z: [] }],
-    'children 0': [hh(Zero), { x: 'p', y: {}, z: '0' }],
-    'just string': [hh('Hello'), 'Hello'],
+    base: [
+      hh(Button),
+      {
+        x: 'button',
+        y: { onclick: noop },
+        z: 'testing'
+      }
+    ],
+    'no children': [
+      hh(Input),
+      {
+        x: 'input',
+        y: { type: 'range' },
+        z: []
+      }
+    ],
+    'no props': [
+      hh(Title),
+      {
+        x: 'h1',
+        y: {},
+        z: 'testing'
+      }
+    ],
+    'no props, no children': [
+      hh(Hr),
+      {
+        x: 'hr',
+        y: {},
+        z: []
+      }
+    ],
+    'children 0': [
+      hh(Zero),
+      {
+        x: 'p',
+        y: {},
+        z: '0'
+      }
+    ],
+    'just string': [
+      hh('Hello'),
+      'Hello'
+    ],
   },
+
   Nested: {
     base: [
       hh(['main', [Button]]),
@@ -72,6 +111,7 @@ export default {
       { x: 'main', y: {}, z: [{ x: 'hr', y: {}, z: [] }] },
     ],
   },
+
   Component: {
     base: [
       hh(Main),
