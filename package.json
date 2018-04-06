@@ -1,6 +1,6 @@
 {
   "name": "ijk",
-  "version": "0.21.1",
+  "version": "0.22.0",
   "description": "Transforms arrays into virtual dom trees",
   "main": "index.js",
   "module": "index.js",
