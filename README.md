@@ -1,6 +1,9 @@
 # ijk
 > Transforms arrays into virtual DOM trees
 
+[![Build Status](https://travis-ci.org/lukejacksonn/ijk.svg?branch=master)](https://travis-ci.org/lukejacksonn/ijk)
+[![codecov](https://codecov.io/gh/lukejacksonn/ijk/branch/master/graph/badge.svg)](https://codecov.io/gh/lukejacksonn/ijk)
+
 Find `h` a bit repetitive? Not a huge fan of JSX? Love LISP? Code as data and data as code?
 
 This is a tiny recursive factory function that allows you to write terse, declarative representations of virtual DOM trees. It does not try mimic HTML or JSON syntax but instead a series of nested arrays to represent user interfaces.
