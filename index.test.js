@@ -40,45 +40,42 @@ export default {
       {
         x: 'button',
         y: { onclick: noop },
-        z: 'testing'
-      }
+        z: ['testing'],
+      },
     ],
     'no children': [
       hh(Input),
       {
         x: 'input',
         y: { type: 'range' },
-        z: []
-      }
+        z: [],
+      },
     ],
     'no props': [
       hh(Title),
       {
         x: 'h1',
         y: {},
-        z: 'testing'
-      }
+        z: ['testing'],
+      },
     ],
     'no props, no children': [
       hh(Hr),
       {
         x: 'hr',
         y: {},
-        z: []
-      }
+        z: [],
+      },
     ],
     'children 0': [
       hh(Zero),
       {
         x: 'p',
         y: {},
-        z: '0'
-      }
+        z: ['0'],
+      },
     ],
-    'just string': [
-      hh('Hello'),
-      'Hello'
-    ],
+    'just string': [hh('Hello'), 'Hello'],
   },
 
   Nested: {
@@ -87,7 +84,7 @@ export default {
       {
         x: 'main',
         y: {},
-        z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }],
+        z: [{ x: 'button', y: { onclick: noop }, z: ['testing'] }],
       },
     ],
     'base with string': [
@@ -95,7 +92,7 @@ export default {
       {
         x: 'main',
         y: {},
-        z: [{ x: 'button', y: { onclick: noop }, z: 'testing' }, 'Hello'],
+        z: [{ x: 'button', y: { onclick: noop }, z: ['testing'] }, 'Hello'],
       },
     ],
     'no children': [
@@ -104,7 +101,7 @@ export default {
     ],
     'no props': [
       hh(['main', [Title]]),
-      { x: 'main', y: {}, z: [{ x: 'h1', y: {}, z: 'testing' }] },
+      { x: 'main', y: {}, z: [{ x: 'h1', y: {}, z: ['testing'] }] },
     ],
     'no props, no children': [
       hh(['main', [Hr]]),
@@ -120,28 +117,28 @@ export default {
         y: {},
         z: [
           'Hello',
-          { x: 'p', y: {}, z: '0' },
-          { x: 'h1', y: {}, z: 'Hello World' },
+          { x: 'p', y: {}, z: ['0'] },
+          { x: 'h1', y: {}, z: ['Hello World'] },
           { x: 'input', y: { type: 'range' }, z: [] },
           {
             x: 'ul',
             y: {},
             z: [
-              { x: 'li', y: {}, z: '1' },
-              { x: 'li', y: {}, z: '2' },
-              { x: 'li', y: {}, z: '3' },
+              { x: 'li', y: {}, z: ['1'] },
+              { x: 'li', y: {}, z: ['2'] },
+              { x: 'li', y: {}, z: ['3'] },
             ],
           },
-          { x: 'button', y: { onclick: noop }, z: 'Log Event' },
+          { x: 'button', y: { onclick: noop }, z: ['Log Event'] },
           {
             x: 'section',
             y: {},
             z: [
-              { x: 'h2', y: {}, z: 'Some News' },
+              { x: 'h2', y: {}, z: ['Some News'] },
               { x: 'hr', y: {}, z: [] },
-              { x: 'p', y: {}, z: 'lorem ipsum dolor sit amet' },
-              { x: 'li', y: {}, z: '4' },
-              { x: 'li', y: {}, z: '5' },
+              { x: 'p', y: {}, z: ['lorem ipsum dolor sit amet'] },
+              { x: 'li', y: {}, z: ['4'] },
+              { x: 'li', y: {}, z: ['5'] },
             ],
           },
         ],
