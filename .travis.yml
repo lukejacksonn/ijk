@@ -1,5 +1,13 @@
 language: node_js
 node_js:
-- "9"
+  - "9"
 
-script: npm test
+before_install:
+  - npm i -g codecov
+
+script:
+  - npm run coverage
+  - codecov
+
+notifications:
+  email: false
