@@ -1,9 +1,10 @@
 const isString = x => typeof x === 'string'
-const isArray = x => Array.isArray(x)
+const isArray = Array.isArray
+const arrayPush = Array.prototype.push
 const isObject = x => typeof x === 'object' && !isArray(x)
 
 const clean = (arr, n) => (
-  n && Array.prototype.push.apply(arr, isString(n[0]) ? [n] : n), arr
+  n && arrayPush.apply(arr, isString(n[0]) ? [n] : n), arr
 )
 
 const child = (n, cb) =>
