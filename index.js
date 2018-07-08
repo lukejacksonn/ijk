@@ -9,13 +9,16 @@ const clean = (arr, n) => (
 const child = (n, cb) =>
   n != null ? (isArray(n) ? n.reduce(clean, []).map(cb) : [n + '']) : []
 
-export const h = (x, y, z) => node =>
+export const h = (x, y, z) => {
+  const transform = node =>
   isString(node)
     ? node
     : isObject(node[1])
       ? {
           [x]: node[0],
           [y]: node[1],
-          [z]: child(node[2], h(x, y, z)),
+          [z]: child(node[2], transform),
         }
-      : h(x, y, z)([node[0], {}, node[1]])
+      : transform([node[0], {}, node[1]])
+  return transform
+}
