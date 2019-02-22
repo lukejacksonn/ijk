@@ -14,7 +14,7 @@ const tree = h('x', 'y', 'z')
   ['main', [
     ['h1', 'Hello World'],
     ['input', { type: 'range' }],
-    ['input', { onclick: console.log }, 'Log Event'],
+    ['button', { onclick: console.log }, 'Log Event'],
   ]]
 )
 ```
